@@ -1,4 +1,5 @@
 import './Card.css';
+import { useEffect, useRef } from 'react'
 
 export const Card = ({
   id,
@@ -27,6 +28,14 @@ export const Card = ({
     }
   };
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef.current && !inputRef.current.value) {
+      inputRef.current.focus();
+    }
+  })
+
   return (
     <form className="card" onSubmit={handleSubmit}>
       <input
@@ -43,6 +52,7 @@ export const Card = ({
         value={title}
         onChange={handleTitleChange}
         onBlur={handleTitleBlur}
+        ref={inputRef}
       />
     </form>
   );
