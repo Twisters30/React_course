@@ -1,0 +1,7 @@
+.note-page {
+    margin: 25px auto;
+    max-width: 1240px;
+    padding: 0 15px;
+    display: flex;
+    gap: 25px;
+}

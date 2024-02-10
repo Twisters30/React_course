@@ -58,3 +58,6 @@
 .loader-item:first-of-type {
     animation: first 1.05s linear infinite;
 }
+.loader-center {
+    margin: 0 auto;
+}
