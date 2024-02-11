@@ -25,7 +25,7 @@ export const RegisterForm: FC<TypeRegisterProps> = ({changeAuthState}) => {
 	const createRegisterMutation = useMutation({
 		mutationFn: registerUser,
 		onSuccess() {
-			changeAuthState()
+			changeAuthState() // меняест состояние в коспоненте AuthForm c register на auth
 		},
 		onError(error) {
 			if (error.toString().includes('email') && error instanceof Error) {
