@@ -8,6 +8,7 @@ export const RestaurantsView = () => {
 	return (
 		<>
 			<input
+				className={'search-input'}
 				onChange={(event) => filterRestaurantData(event.target.value)}
 				placeholder="Search for restaurants"
 			/>
