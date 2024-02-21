@@ -18,6 +18,19 @@ p {
   background: #fffaf8;
 }
 
+.container {
+    max-width: 1240px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1240px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -38,7 +51,6 @@ header {
 
 .profile {
   border-radius: 50%;
-
   width: 40px;
   height: 40px;
 }
@@ -65,4 +77,77 @@ footer {
 
 .corporation {
   align-self: flex-end;
+}
+.card-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 16px;
+}
+
+@keyframes appearance {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.card-list__item {
+    padding: 15px;
+    border-radius: 5%;
+    max-width: 250px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    animation: appearance 0.3s ease forwards;
+}
+.card-list__image {
+    width: 200px;
+    height: 100px;
+    border-radius: 5%;
+}
+.card-list__title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #9c9896;
+}
+.card-list__description {
+    margin-bottom: 15px;
+    color: #cdb2ad;
+}
+
+.list-stars {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.star {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: 300ms;
+}
+.star path {
+    transition: 300ms;
+    fill: none;
+}
+
+.star path:hover,
+.star path:focus {
+    transition: 300ms;
+    fill: orange;
+}
+
+.star.fill path {
+    transition: 300ms;
+    fill: orange;
+}
+.star.fill path:hover {
+    transition: 300ms;
+    fill: none;
+    stroke: orange;
 }
