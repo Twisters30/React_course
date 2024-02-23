@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import { USERS } from "../../data";
 import "./UserInfoPage.css";
 
@@ -28,6 +28,8 @@ export function UserInfoPage() {
 				<img src={user.avatar} alt="" width={200} height={200} />
 				<p>{user.fullName}</p>
 				<p>{user.bio}</p>
+				<div className={'separator'}></div>
+				<p>playlist: {<Link to={`/playlists/${user.id}`}>{user.playlist?.name}</Link>}</p>
 			</div>
 		</div>
 	);

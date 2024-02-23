@@ -1,20 +1,12 @@
-import { ChangeEvent } from "react";
 import { USERS } from "../../data";
 import "./UsersPage.css";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import {useFilterSearchParams} from "../../hooks/useFilterSearchParams";
 
 export function UsersPage() {
-	const [searchParam, setSearchParam] = useSearchParams();
-
-	const handleSearchName = (event: ChangeEvent<HTMLInputElement>): void => {
-		const { value } = event.target;
-		setSearchParam({ searchName: value.toLowerCase() });
-	};
-
-	const searchName = searchParam.get("searchName") || "";
-
+	const { searchDataUserName, handleSearch } = useFilterSearchParams({username:'username'});
 	const filteredUsers = USERS.filter(({ fullName }) =>
-		fullName.toLowerCase().includes(searchName)
+		fullName.toLowerCase().includes(searchDataUserName)
 	);
 
 	return (
@@ -24,7 +16,7 @@ export function UsersPage() {
 			<div className="users">
 				<label>
 					введите имя{" "}
-					<input type="text" value={searchName} onChange={handleSearchName} />
+					<input type="text" value={searchDataUserName} onChange={(e) => handleSearch(e, 'username')} />
 				</label>
 
 				{filteredUsers.map(({ id, fullName }) => (

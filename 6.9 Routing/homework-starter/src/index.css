@@ -44,3 +44,28 @@ body {
 a {
 	text-decoration: none;
 }
+ul {
+    list-style-type: none;
+}
+label {
+    text-transform: capitalize;
+    padding: 0 5px 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fcfcb7;
+}
+input {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.separator {
+    margin: 15px 0;
+    border-bottom: 2px solid gray;
+}
+.flex-list {
+    display: flex;
+    flex-direction: column;
+}
