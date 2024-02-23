@@ -6,20 +6,11 @@ import {useFilterSearchParams} from "../../hooks/useFilterSearchParams";
 export const PlaylistsPage = () => {
 
 	const { searchDataName, searchDataGenre, handleSearch} = useFilterSearchParams({name: 'name' ,genre: 'genre'});
-	const filteredByGenre = PLAYLISTS.filter((item) => item.genre.toLowerCase().includes(searchDataGenre));
-	const filteredByName = PLAYLISTS.filter((item) => item.name.toLowerCase().includes(searchDataName));
-
-	// тестовый кондишн
-	let filteredList;
-	if (searchDataName && searchDataGenre) {
-		filteredList = [...new Set([...filteredByGenre,...filteredByName])];
-	} else if (searchDataGenre) {
-		filteredList = filteredByGenre;
-	} else if (searchDataName) {
-		filteredList = filteredByName;
-	} else {
-		filteredList = PLAYLISTS;
-	}
+	const filteredList = PLAYLISTS.filter(item => {
+		const genreCondition = searchDataGenre ? item.genre.toLowerCase().includes(searchDataGenre) : true;
+		const nameCondition = searchDataName ? item.name.toLowerCase().includes(searchDataName) : true;
+		return genreCondition && nameCondition;
+	})
 	return (
 		<>
 			<h2>Playlists Page</h2>
