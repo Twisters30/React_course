@@ -1,0 +1,9 @@
+.playlist__link {
+    font-size: 18px;
+    color: #8785cb;
+    transition: 300ms;
+}
+.playlist__link:hover {
+    padding-bottom: 5px;
+    text-decoration: underline;
+}
