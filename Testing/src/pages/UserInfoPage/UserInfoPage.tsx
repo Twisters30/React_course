@@ -12,7 +12,7 @@ export function UserInfoPage() {
 				<h2>UserInfoPage</h2>
 
 				<div className="users">
-					<p>пользователя таким userId нет</p>
+					<p data-testid={'default-text'}>пользователя таким userId нет</p>
 				</div>
 			</div>
 		);
@@ -24,12 +24,12 @@ export function UserInfoPage() {
 
 			<div className="users">
 				<p>{user.jobTitle}</p>
-				<p>{user.email}</p>
+				<p data-testid={'user-email'}>{user.email}</p>
 				<img src={user.avatar} alt="" width={200} height={200} />
-				<p>{user.fullName}</p>
+				<p data-testid={'user-name'}>{user.fullName}</p>
 				<p>{user.bio}</p>
 				<div className={'separator'}></div>
-				<p>playlist: {<Link to={`/playlists/${user.id}`}>{user.playlist?.name}</Link>}</p>
+				<p>playlist: {<Link data-testid={'link-playlist'} to={`/playlists/${user.id}`}>{user.playlist?.name}</Link>}</p>
 			</div>
 		</div>
 	);

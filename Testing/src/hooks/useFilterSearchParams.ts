@@ -1,9 +1,9 @@
 import {useSearchParams} from "react-router-dom";
 import {ChangeEvent} from "react";
 type TFilter = {
-	genre?;
-	name?;
-	username?;
+	genre?: string;
+	name?: string;
+	username?: string;
 };
 type TKeyParam = 'genre' | 'name' | 'username'
 
@@ -18,15 +18,17 @@ export const useFilterSearchParams = (keySearchParams:TFilter) => {
 		if (keyParam === 'username') setSearchParam({[keyParam]: value.toLowerCase()});
 	};
 
-	let searchDataUserName: string;
-	let searchDataName: string;
-	let searchDataGenre: string;
+	let searchDataUserName = '';
+	let searchDataName = '';
+	let searchDataGenre = '';
 	if (Object.keys(keySearchParams).length === 1 && 'username' in keySearchParams) {
-		searchDataUserName = searchParams.get(keySearchParams.username) || "";
+		const tmpDataUserName: string | null = keySearchParams.username ? searchParams.get(keySearchParams.username) : "";
+		searchDataUserName = tmpDataUserName === null ? '' : tmpDataUserName
 	} else {
-		searchDataName = searchParams.get(keySearchParams.name) || "";
-		searchDataGenre = searchParams.get(keySearchParams.genre) || "";
-
+		const tmpDataName: string | null = keySearchParams.name ? searchParams.get(keySearchParams.name) : "";
+		const tmpDataGenre: string | null = keySearchParams.genre ? searchParams.get(keySearchParams.genre) : "";
+		searchDataName = tmpDataName === null ? '' : tmpDataName;
+		searchDataGenre = tmpDataGenre === null ? '' : tmpDataGenre
 	}
 	return {
 		searchDataUserName,

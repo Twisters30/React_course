@@ -1,8 +1,6 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
+import {AppRouter} from "./router/AppRouter";
 import "./app.css";
-import { MainPage, UserInfoPage, UsersPage } from "./pages";
-import {PlaylistsPage} from "./pages/PlaylistsPage";
-import {PlaylistsInfoPage} from "./pages/PlaylistsInfoPage";
 
 export function App() {
 	return (
@@ -17,13 +15,7 @@ export function App() {
 				</nav>
 
 				<main className="content">
-					<Routes>
-						<Route path="/" element={<MainPage />} />
-						<Route path="/users" element={<UsersPage />} />
-						<Route path="/users/:userId" element={<UserInfoPage />} />
-						<Route path="/playlists?" element={<PlaylistsPage />} />
-						<Route path="/playlists/:playlistId" element={<PlaylistsInfoPage />} />
-					</Routes>
+					<AppRouter />
 				</main>
 			</div>
 

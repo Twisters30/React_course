@@ -16,7 +16,7 @@ export function UsersPage() {
 			<div className="users">
 				<label>
 					введите имя{" "}
-					<input type="text" value={searchDataUserName} onChange={(e) => handleSearch(e, 'username')} />
+					<input data-testid={'user-input-search'} type="text" value={searchDataUserName} onChange={(e) => handleSearch(e, 'username')} />
 				</label>
 
 				{filteredUsers.map(({ id, fullName }) => (

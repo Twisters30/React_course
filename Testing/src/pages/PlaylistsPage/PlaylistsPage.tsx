@@ -17,22 +17,21 @@ export const PlaylistsPage = () => {
 			<div className={'flex-list'}>
 				<label>
 					введите жанр: {" "}
-					<input type="text" value={searchDataGenre} onChange={(e) => {
+					<input data-testid={'input-genre'} type="text" value={searchDataGenre} onChange={(e) => {
 						handleSearch(e, 'genre')
 					}} />
 				</label>
 				<label>
 					введите название: {" "}
-					<input type="text" value={searchDataName} onChange={(e) => {
+					<input data-testid={'input-playlist-name'} type="text" value={searchDataName} onChange={(e) => {
 						handleSearch(e, 'name')
 					}} />
 				</label>
 				<div className={'separator'}></div>
-			</div>
-			<ul className={'playlist__list'}>
-				{
-					!filteredList.length ? <h3>Ничего не найденно</h3> :
-						filteredList.map(item => {
+			</div><ul className={'playlist__list'}>
+			{
+				!filteredList.length ? <h3>Ничего не найденно</h3> :
+					filteredList.map(item => {
 						if (item.genre !== 'Non Music') {
 							return (
 								<li key={item.id} className={'playlist__item'}>
@@ -46,8 +45,8 @@ export const PlaylistsPage = () => {
 							)
 						}
 					})
-				}
-			</ul>
+			}
+		</ul>
 		</>
 	)
 }
