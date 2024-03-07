@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { IBestEmployees } from "../../api.ts";
 import "./styles.css";
 
@@ -6,7 +6,7 @@ interface IBestEmployeesData {
   getApi: () => Promise<IBestEmployees>;
 }
 
-export const BestEmployees = ({ getApi }: IBestEmployeesData) => {
+export const BestEmployees = memo(({ getApi }: IBestEmployeesData) => {
   const [employees, setEmployees] = useState<IBestEmployees | null>(null);
   useEffect(() => {
     getApi().then((res) => setEmployees(res));
@@ -23,4 +23,4 @@ export const BestEmployees = ({ getApi }: IBestEmployeesData) => {
       </div>
     )
   );
-};
+});

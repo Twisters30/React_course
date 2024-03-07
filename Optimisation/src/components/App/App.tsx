@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import { fetchBestEmployeesData, fetchData, IData } from "../../api.ts";
 import { BestEmployees } from "../BestEmployees/BestEmployees.tsx";
 import { Team } from "../Team/Team.tsx";
@@ -18,6 +18,7 @@ function App() {
   /* Вычисляет доход на количество месяцев (примем, что список profit каждый месяц одинаков) */
   const calculateProfitSum = (month: number) =>
     month * profit.reduce((acc, i) => acc + i, 0);
+	const useCalculateProfitSum = useCallback(calculateProfitSum,[month, data])
 
   const date = useMemo(() => `${month}/${year}`, [month, year]);
 
@@ -39,7 +40,7 @@ function App() {
       </div>
       <div className="block">
         <p>Date is: {date}</p>
-        <p>Profit sum is: {calculateProfitSum(month)} $</p>
+        <p>Profit sum is: {useCalculateProfitSum(month)} $</p>
       </div>
       <BestEmployees getApi={getApi} />
       <Team team={team} />
