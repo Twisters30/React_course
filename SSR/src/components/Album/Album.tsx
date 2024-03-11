@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { Photos } from "../../models";
 import Api from "../../api/api";
 import "./index.css";
+import { v4 as uuidv4 } from "uuid";
 
 type Props = {
 	albumId: number;
@@ -22,7 +23,7 @@ const Album: FC<Props> = ({ albumId }: Props) => {
 	return (
 		<div className="album-container">
 			{data.map((photo) => (
-				<div className="photo-container">
+				<div className="photo-container" key={uuidv4()}>
 					<img src={photo.url} className="photo-img" />
 				</div>
 			))}

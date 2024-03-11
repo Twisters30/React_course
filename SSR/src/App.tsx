@@ -1,22 +1,26 @@
 import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
-import CusomLayout from "./components/Layout/Layout";
-import AlbumsPage from "./pages/AlbumsPage/AlbumsPage";
-import PostsPage from "./pages/PostsPage/PostsPage";
-import TodoPage from "./pages/TodoPage/TodoPage";
-import HomePage from "./pages/HomePage/HomePage";
+import { lazy, Suspense } from "react";
+
+const LazyCustomLayout = lazy( () => import("./components/Layout/Layout"));
+const LazyAlbumsPage = lazy(() => import("./pages/AlbumsPage/AlbumsPage"));
+const LazyPostsPage = lazy(() => import("./pages/PostsPage/PostsPage"));
+const LazyTodoPage = lazy(() => import("./pages/TodoPage/TodoPage"));
+const LazyHomePage = lazy(() => import("./pages/HomePage/HomePage"));
 
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<CusomLayout />}>
-					<Route index path="" element={<HomePage />} />
-					<Route path="posts" element={<PostsPage />} />
-					<Route path="albums" element={<AlbumsPage />} />
-					<Route path="todos" element={<TodoPage />} />
-				</Route>
-			</Routes>
+			<Suspense fallback={<div>Loading...&#8987;</div>}>
+				<Routes>
+					<Route path="/" element={<LazyCustomLayout />}>
+						<Route index path="" element={<LazyHomePage />} />
+						<Route path="posts" element={<LazyPostsPage />} />
+						<Route path="albums" element={<LazyAlbumsPage />} />
+						<Route path="todos" element={<LazyTodoPage />} />
+					</Route>
+				</Routes>
+			</Suspense>
 		</BrowserRouter>
 	);
 };

@@ -3,6 +3,7 @@ import { Content, Footer, Header } from "antd/es/layout/layout";
 import { FC, ReactNode } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./index.css";
+import {useLocation} from "react-router";
 
 type Props = {
 	children?: ReactNode[];
@@ -15,14 +16,17 @@ const items = [
 	{ key: 3, label: <Link to={"/todos"}>Todos</Link> },
 ];
 
-const CusomLayout: FC<Props> = () => {
+const CustomLayout: FC<Props> = () => {
+	const currentRoutePath = useLocation().pathname;
+	const getIndexForCurrenRoute = items.find((item) => item.label.props.to.includes(currentRoutePath));
+	const keyMenuActiveLink = getIndexForCurrenRoute ? getIndexForCurrenRoute.key.toString() : "0";
 	return (
 		<Layout className="layout">
 			<Header className="header">
 				<Menu
 					theme="dark"
 					mode="horizontal"
-					defaultSelectedKeys={["0"]}
+					defaultSelectedKeys={[keyMenuActiveLink]}
 					items={items}
 					style={{ flex: 1, minWidth: 0 }}
 				/>
@@ -35,4 +39,4 @@ const CusomLayout: FC<Props> = () => {
 	);
 };
 
-export default CusomLayout;
+export default CustomLayout;
