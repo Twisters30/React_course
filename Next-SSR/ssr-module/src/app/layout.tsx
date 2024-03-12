@@ -18,9 +18,9 @@ export default function RootLayout({children,}: Readonly<{
 }>) {
 	return (
 		<html lang="en">
-		<body className={inter.className}>
+		<body className={`${inter.className}`}>
 		<AntdRegistry>
-			<Layout className={styles.root}>
+			<Layout className={`${styles.root}`}>
 				<Header className={styles.header}>
 					<Navigation />
 				</Header>
